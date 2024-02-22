@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pokédex</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #pokedex {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        #pokemonImage {
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="pokedex">
+        <img id="pokemonImage" src="" alt="Imagem do Pokémon">
+        <h2 id="pokemonName">Nome do Pokémon</h2>
+    </div>
+
+    <script>
+        fetch('https://pokeapi.co/api/v2/pokemon/1/')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('pokemonImage').src = data.sprites.front_default;
+                document.getElementById('pokemonName').innerText = data.name;
+            });
+    </script>
+</body>
+</html>
